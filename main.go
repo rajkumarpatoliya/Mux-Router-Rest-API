@@ -75,5 +75,7 @@ func main() {
 	r.HandleFunc("/api/books/{id}", updateBook).Methods("PUT")
 	r.HandleFunc("/api/books/{id}", deleteBook).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(":4000", r))
+	if err := http.ListenAndServe(":4000", r); err != nil {
+		log.Fatal(err)
+	}
 }
